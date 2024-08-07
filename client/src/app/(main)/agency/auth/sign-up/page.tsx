@@ -1,20 +1,15 @@
-import React from 'react'
-import SignupForm from '@/app/(main)/_components/signupForm';
+import SignupForm from "./_components/signupForm";
 
-function page() {
-  return (
-    <main className="mt-4">
-        <div className="container">
+export default function SignupPage() {
+    return (
+        <main className="mt-4">
             <h1 className="text-3xl font-bold tracking-tight">
-                <div className="h-1 bg-muted my-4">
-                    <SignupForm />
-                    {/* Oauth */}
-
-                </div>
+                Sign Up
             </h1>
-        </div>
-    </main>
-  )
+            <div className="h-1 bg-muted my-4">
+                <SignupForm />
+                {/* OAuth */}
+            </div>
+        </main>
+    )
 }
-
-export default page
