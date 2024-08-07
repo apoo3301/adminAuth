@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { signinUserAction } from "@/actions/signin-user-action"
 
 function signinForm() {
     const [success, setSuccess] = useState(false);
@@ -30,7 +31,13 @@ function signinForm() {
     const { handleSubmit, control, formState, setError, reset } = form;
 
     const submit = async (values: SigninInput) => {
-        console.log(values);
+        const res = await signinUserAction(values);
+
+        if (res.success) {
+            reset();
+        } else {
+            console.log(res.error)
+        }
     };
 
   return (
