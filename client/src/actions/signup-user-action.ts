@@ -2,6 +2,7 @@
 
 import * as v from "valibot";
 import { SignupSchema } from "@/validators/signup-validator";
+import argon2 from "argon2";
 
 type Res = 
     | { success: true }
@@ -9,24 +10,19 @@ type Res =
     | { success: false, error: string, statusCode: 500 };
 
 async function signupUserAction(values: unknown): Promise<Res> {
-        console.log("values", values)
-    // @ts-ignore
-    values.email = undefined
-    console.log("values", values)
-    const parsedValues = v.safeParse(SignupSchema, values);
-
-    if (!parsedValues.success) {
-        const flatErrors = v.flatten(parsedValues.issues);
-        console.error(flatErrors);
-        return { success: false, error: flatErrors, statusCode: 400 };
-    }
-
-    const { name, email, password } = parsedValues.output;
-    console.log("success", name, email, password)
     try {
+        const parsedValues = v.safeParse(SignupSchema, values);
+
+        if (!parsedValues.success) {
+            const flatErrors = v.flatten(parsedValues.issues);
+            console.error("Validation errors:", flatErrors);
+            return { success: false, error: flatErrors, statusCode: 400 };
+        }
+
+        const { name, email, password } = parsedValues.output;
+        const hashedPassword = await argon2.hash(password);
         return { success: true };
     } catch (err) {
-        console.error(err);
         return { success: false, error: "server error", statusCode: 500 };
     }
 }
