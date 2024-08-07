@@ -36,7 +36,12 @@ function signinForm() {
         if (res.success) {
             reset();
         } else {
-            console.log(res.error)
+          switch(res.statusCode) {
+            case 500:
+            default:
+              const error = res.error || "internal server error";
+              setError("password", { message: error });
+          }
         }
     };
 

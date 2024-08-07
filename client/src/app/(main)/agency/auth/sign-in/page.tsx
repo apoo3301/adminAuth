@@ -10,11 +10,11 @@ export default function SigninPage() {
                 <div className="h-1 bg-muted my-4">
                     <SigninForm />
                     {/* oauth */}
-                    <p>Already have an account? Click{" "}
+                    <p>Don&apos;t have an account? Click{" "}
                         <Button variant="link" size="sm" className="px-0" asChild>
-                            <Link href="/agency/auth/sign-in">here</Link>
-                        </Button> {" "}
-                        to sign in.
+                            <Link href="/agency/auth/sign-un">here</Link>
+                        </Button>{" "}
+                        to sign up.
                     </p>
                 </div>
             </div>
