@@ -28,13 +28,13 @@ function signupForm() {
         defaultValues: { name: "", email: "", password: "", confirmPassword: "" },
     });
 
-    const { handleSubmit, control, formState, setError, reset } = form;
+    const { handleSubmit, control, formState, setError } = form;
 
     const submit = async (values: SignupInput) => {
         const res = await signupUserAction(values);
 
         if (res.success) {
-            reset();
+            setSuccess(true);
         } else {
             switch (res.statusCode) {
                 case 400:
@@ -51,7 +51,21 @@ function signupForm() {
                         setError("confirmPassword", {message: error})
             }
         }
-    };
+    }
+    if(success) {
+      return (
+      <div>
+          <p>User successfully created!</p>
+          <span>
+            Click{" "}
+            <Button variant="link" size="sm" className="px-0" asChild>
+              <Link href="/agency/auth/sign-in">here</Link>
+            </Button>{" "}
+            to sign in.
+          </span>      
+      </div>
+      ); 
+  }
 
   return (
     <Form {...form}>
