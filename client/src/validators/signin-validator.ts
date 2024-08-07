@@ -10,7 +10,7 @@ export const SigninSchema =
     password: v.pipe(
       v.string("Your password must be a string."),
       v.nonEmpty("Please enter your password."),
-    ),
-}),
+    )
+})
 
 export type SigninInput = v.InferInput<typeof SigninSchema>;
