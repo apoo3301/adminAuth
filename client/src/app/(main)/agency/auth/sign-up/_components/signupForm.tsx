@@ -17,21 +17,41 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import signupUserAction from "@/actions/signup-user-action";
 
 function signupForm() {
     const [success, setSuccess] = useState(false);
-  const router = useRouter();
+    const router = useRouter();
 
-  const form = useForm<SignupInput>({
-    resolver: valibotResolver(SignupSchema),
-    defaultValues: { name: "", email: "", password: "", confirmPassword: "" },
-  });
+    const form = useForm<SignupInput>({
+        resolver: valibotResolver(SignupSchema),
+        defaultValues: { name: "", email: "", password: "", confirmPassword: "" },
+    });
 
-  const { handleSubmit, control, formState, setError } = form;
+    const { handleSubmit, control, formState, setError, reset } = form;
 
-  const submit = async (values: SignupInput) => {
-    console.log(values);
-  };
+    const submit = async (values: SignupInput) => {
+        const res = await signupUserAction(values);
+
+        if (res.success) {
+            reset();
+        } else {
+            switch (res.statusCode) {
+                case 400:
+                    const nestedErrors = res.error.nested;
+                    for (const key in nestedErrors) {
+                        setError(key as keyof SignupInput, { 
+                            message: nestedErrors[key]?.[0] 
+                        });
+                    }
+                    break;
+                case 500:
+                    default:
+                        const error = res.error || "internal server error";
+                        setError("confirmPassword", {message: error})
+            }
+        }
+    };
 
   return (
     <Form {...form}>
