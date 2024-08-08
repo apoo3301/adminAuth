@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/extern/Header";
+import { Providers } from "@/components/extern/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,8 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("antialiased", fontHeading.variable, fontBody.variable)}>
-        <Header />
-        {children}</body>
+          <Providers>
+            <Header />
+            {children}
+          </Providers>
+        </body>
     </html>
   );
 }

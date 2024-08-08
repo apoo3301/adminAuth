@@ -4,7 +4,7 @@ import { signOut } from "../../auth";
 
 export async function SignoutUserAction() {
     try {
-        await signOut({ redirect: false });
+        await signOut({ redirectTo: "/" });
     } catch (err) {
         console.error(err);
     }

@@ -4,6 +4,7 @@ import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { NavigationMenu, NavigationMenuList, NavigationMenuLink } from '@/components/ui/navigation-menu';
 import { ButtonDialog } from './ButtonDialog';
+import { HeaderLinks } from './HeaderLink';
 
 export const Header: FC = () => {
     return (
@@ -50,7 +51,7 @@ export const Header: FC = () => {
                     </NavigationMenuList>
                 </NavigationMenu>
             </div>
-            <ButtonDialog />
+            <HeaderLinks />
         </header>
     );
 };

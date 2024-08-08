@@ -9,7 +9,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
 import { JSX, SVGProps } from "react"
 
-export default function Component() {
+export default function UserButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

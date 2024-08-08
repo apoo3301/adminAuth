@@ -3,23 +3,15 @@
 import { type SignupInput, SignupSchema } from "@/validators/signup-validator";
 import { useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import signupUserAction from "@/actions/signup-user-action";
+import Link from "next/link";
 
-function signupForm() {
+export default function SignupForm() {  // Renamed function to SignupForm
     const [success, setSuccess] = useState(false);
     const router = useRouter();
 
@@ -46,105 +38,103 @@ function signupForm() {
                     }
                     break;
                 case 500:
-                    default:
-                        const error = res.error || "internal server error";
-                        setError("confirmPassword", {message: error})
+                default:
+                    const error = res.error || "internal server error";
+                    setError("confirmPassword", {message: error})
             }
         }
     }
+
     if(success) {
-      return (
-      <div>
-          <p>User successfully created!</p>
-          <span>
-            Click{" "}
-            <Button variant="link" size="sm" className="px-0" asChild>
-              <Link href="/agency/auth/sign-in">here</Link>
-            </Button>{" "}
-            to sign in.
-          </span>      
-      </div>
-      ); 
-  }
+        return (
+            <div>
+                <p>User successfully created!</p>
+                <span>
+                    Click{" "}
+                    <Button variant="link" size="sm" className="px-0" asChild>
+                        <Link href="/agency/auth/sign-in">here</Link>
+                    </Button>{" "}
+                    to sign in.
+                </span>      
+            </div>
+        ); 
+    }
 
-  return (
-    <Form {...form}>
-      <form
-        onSubmit={handleSubmit(submit)}
-        className="max-w-[400px] space-y-8"
-        autoComplete="off"
-      >
-        <FormField
-          control={control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input type="text" placeholder="e.g. John Smith" {...field} />
-              </FormControl>
-              <FormDescription>Optional</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  type="email"
-                  placeholder="e.g. john.smith@example.com"
-                  {...field}
+    return (
+        <Form {...form}>
+            <form
+                onSubmit={handleSubmit(submit)}
+                className="max-w-[400px] space-y-8"
+                autoComplete="off"
+            >
+                <FormField
+                    control={control}
+                    name="name"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Name</FormLabel>
+                            <FormControl>
+                                <Input type="text" placeholder="e.g. John Smith" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
 
-        <FormField
-          control={control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="e.g. ********" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormField
+                    control={control}
+                    name="email"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                                <Input
+                                    type="email"
+                                    placeholder="e.g. john.smith@example.com"
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
-        <FormField
-          control={control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="e.g. ********" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormField
+                    control={control}
+                    name="password"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Password</FormLabel>
+                            <FormControl>
+                                <Input type="password" placeholder="e.g. ********" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
-        <Button
-          type="submit"
-          disabled={formState.isSubmitting}
-          className="w-full"
-        >
-          Sign up
-        </Button>
-      </form>
-    </Form>
-  );
-};
+                <FormField
+                    control={control}
+                    name="confirmPassword"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Confirm Password</FormLabel>
+                            <FormControl>
+                                <Input type="password" placeholder="e.g. ********" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
-export default signupForm
+                <Button
+                    type="submit"
+                    disabled={formState.isSubmitting}
+                    className="w-full"
+                >
+                    Sign up
+                </Button>
+            </form>
+        </Form>
+    );
+}
