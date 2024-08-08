@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 import { Label } from "../ui/label";

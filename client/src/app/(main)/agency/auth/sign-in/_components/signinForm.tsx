@@ -28,15 +28,18 @@ function signinForm() {
         defaultValues: { email: "", password: "" },
     });
 
-    const { handleSubmit, control, formState, setError, reset } = form;
+    const { handleSubmit, control, formState, setError } = form;
 
     const submit = async (values: SigninInput) => {
         const res = await signinUserAction(values);
 
         if (res.success) {
-            reset();
+          window.location.href = "/agency/profile"
         } else {
           switch(res.statusCode) {
+            case 401:
+              setError("password", { message: "invalid credentials" });
+              break;
             case 500:
             default:
               const error = res.error || "internal server error";
