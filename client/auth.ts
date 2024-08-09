@@ -38,7 +38,7 @@ const nextAuth = NextAuth({
             if (['google'].includes(account.provider)) {
                 if (user.email) await oauthVerifyEmailAction(user.email);
             }
-        }
+        },
     },
     providers: [
         Credentials({
