@@ -1,9 +1,9 @@
-import React from 'react'
-import { auth } from '../../../../../auth'
-import { Button } from '@/components/ui/button';
-import Link from 'next/link'; // Use 'next/link' instead of 'lucide-react'
-import { type User } from 'next-auth';
 import SignoutButton from '@/components/extern/SignoutButton';
+import { Button } from '@/components/ui/button';
+import { auth } from '../../../../../auth'
+import { type User } from 'next-auth';
+import Link from 'next/link';
+import React from 'react'
 
 export default async function ProfilePage() {
     const session = await auth();
@@ -25,13 +25,15 @@ const SignedIn = ({ user }: { user: User }) => {
             <table className="mt-4 table-auto divide-y">
                 <thead>
                     <tr className='divide-x'>
+                        <th className='bg-gray-50 px-6 py-3 text-start'>Id</th>
                         <th className='bg-gray-50 px-6 py-3 text-start'>Name</th>
                         <th className='bg-gray-50 px-6 py-3 text-start'>Email</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr className='divide-x'>
-                        <td className='px-6 py-3'>{user.name}</td>
+                        <td className='px-6 py-3'>{user.id}</td>
+                        <td className='px-6 py-3'>{user.name || "null"}</td>
                         <td className='px-6 py-3'>{user.email}</td>
                     </tr>
                 </tbody>

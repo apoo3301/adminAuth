@@ -3,13 +3,29 @@ import { findUserByEmail } from "./resources/user-queries";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import NextAuth from "next-auth";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import db from "@/drizzle"
 import * as v from "valibot";
 import argon2 from "argon2";
 
 const nextAuth = NextAuth({
+    adapter: DrizzleAdapter(db),
     session: { strategy: "jwt" },
     secret: process.env.NEXTAUTH_SECRET,
     pages: { signIn: "/agency/auth/sign-in" },
+    callbacks: {
+        jwt({ token, user}) {
+            //console.log("token in jwt",token)
+            if (user?.id) token.id = user.id;
+            return token;
+        },
+        session({ session, token}) {
+            session.user.id = token.id;
+            // console.log(session)
+            // console.log(token)
+            return session;
+        }
+    },
     providers: [
         Credentials({
             async authorize(credentials) {
