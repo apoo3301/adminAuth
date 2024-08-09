@@ -1,9 +1,10 @@
 import { SigninSchema } from "@/validators/signin-validator";
-import NextAuth from "next-auth";
+import { findUserByEmail } from "./resources/user-queries";
 import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
+import NextAuth from "next-auth";
 import * as v from "valibot";
 import argon2 from "argon2";
-import { findUserByEmail } from "./resources/user-queries";
 
 const nextAuth = NextAuth({
     session: { strategy: "jwt" },
@@ -28,6 +29,10 @@ const nextAuth = NextAuth({
 
                 return null;
             },
+        }),
+        Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }),
     ]
 });

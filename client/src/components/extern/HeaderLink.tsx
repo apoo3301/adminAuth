@@ -1,14 +1,35 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "../ui/button"
 import ButtonDialog from "./ButtonDialog"
 import SignoutButton from "./SignoutButton"
-import { auth } from "../../../auth"
+import {useSession} from "next-auth/react" 
+import { Loader, Loader2Icon } from "lucide-react"
 
-export const HeaderLinks = async () => {
-    const session = await auth();
-    return !!session?.user ? <SignedIn /> : <SignedOut />
+export const HeaderLinks = () => {
+    const session = useSession();
+    
+    switch(session.status) {
+        case "loading":
+            return <Loading />;
+        case "unauthenticated":
+            return <SignedOut />;
+        case "authenticated":
+            return <SignedIn />;
+        return <SignedIn />
+        default:
+            return null
+    }
+}
+
+const Loading = () => {
     return (
-        <div>nav</div>
+        <li>
+            <Button size="sm" variant="ghost">
+                <Loader2Icon className="min-w-[8ch] animate-spin" />
+            </Button>
+        </li>
     )
 }
 

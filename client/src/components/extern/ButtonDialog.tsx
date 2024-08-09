@@ -14,6 +14,7 @@ import { SigninSchema, type SigninInput } from "@/validators/signin-validator";
 import { signinUserAction } from "@/actions/signin-user-action";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
+import { OauthSigninButton } from "./OauthSigninButton";
 
 export const ButtonDialog = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -91,7 +92,7 @@ export const ButtonDialog = () => {
                                         </FormItem>
                                     )}
                                 />
-
+                                <OauthSigninButton />
                                 <Button
                                     type="submit"
                                     disabled={formState.isSubmitting}
