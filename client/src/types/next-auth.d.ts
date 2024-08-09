@@ -3,11 +3,14 @@ import type { JWT as DefaultJWT } from 'next-auth/jwt';
 import { users } from "@/drizzle/schema"
 
 declare module "next-auth" {
-    interface User extends DefaultUser {}
+    interface User extends DefaultUser {
+        role: (typeof users.$inferSelect)["role"];
+    }
 }
 
 declare module "next-auth/jwt" {
     interface JWT extends DefaultJWT {
         id: (typeof users.$inferSelect)["id"]
+        role: (typeof users.$inferSelect)["role"]
     }
 }

@@ -5,25 +5,39 @@ import Google from "next-auth/providers/google";
 import NextAuth from "next-auth";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import db from "@/drizzle"
+import * as schema from "@/drizzle/schema";
 import * as v from "valibot";
 import argon2 from "argon2";
+import { oauthVerifyEmailAction } from "@/actions/oauth-verify-email-action";
 
 const nextAuth = NextAuth({
-    adapter: DrizzleAdapter(db),
+    adapter: DrizzleAdapter(db,{
+        accountsTable: schema.accounts,
+        usersTable: schema.users,
+        authenticatorsTable: schema.authenticators,
+        sessionsTable: schema.sessions,
+        verificationTokensTable: schema.verificationTokens
+    }),
     session: { strategy: "jwt" },
     secret: process.env.NEXTAUTH_SECRET,
     pages: { signIn: "/agency/auth/sign-in" },
     callbacks: {
         jwt({ token, user}) {
-            //console.log("token in jwt",token)
             if (user?.id) token.id = user.id;
+            if (user?.role) token.role = user.role;
             return token;
         },
         session({ session, token}) {
             session.user.id = token.id;
-            // console.log(session)
-            // console.log(token)
+            session.user.role = token.role;
             return session;
+        },
+    },
+    events: {
+        async linkAccount({ user, account }) {
+            if (['google'].includes(account.provider)) {
+                if (user.email) await oauthVerifyEmailAction(user.email);
+            }
         }
     },
     providers: [

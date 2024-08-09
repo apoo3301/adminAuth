@@ -28,6 +28,7 @@ const SignedIn = ({ user }: { user: User }) => {
                         <th className='bg-gray-50 px-6 py-3 text-start'>Id</th>
                         <th className='bg-gray-50 px-6 py-3 text-start'>Name</th>
                         <th className='bg-gray-50 px-6 py-3 text-start'>Email</th>
+                        <th className='bg-gray-50 px-6 py-3 text-start'>Role</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,7 @@ const SignedIn = ({ user }: { user: User }) => {
                         <td className='px-6 py-3'>{user.id}</td>
                         <td className='px-6 py-3'>{user.name || "null"}</td>
                         <td className='px-6 py-3'>{user.email}</td>
+                        <td className='px-6 py-3'>{user.role}</td>
                     </tr>
                 </tbody>
             </table>
