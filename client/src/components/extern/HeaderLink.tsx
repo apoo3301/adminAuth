@@ -6,6 +6,7 @@ import ButtonDialog from "./ButtonDialog"
 import SignoutButton from "./SignoutButton"
 import {useSession} from "next-auth/react" 
 import { Loader, Loader2Icon } from "lucide-react"
+import { ModeToggle } from "./ThemeToggle"
 
 export const HeaderLinks = () => {
     const session = useSession();
@@ -36,6 +37,7 @@ const Loading = () => {
 const SignedIn = () => {
     return (
         <>
+            <ModeToggle />
             <Button size="sm" asChild variant="outline">
                 <Link href="/agency/profile">profile</Link>
             </Button>

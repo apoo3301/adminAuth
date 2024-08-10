@@ -4,6 +4,10 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/extern/Header";
 import { Providers } from "@/components/extern/Providers";
+import FooterComp from "@/components/extern/Footer";
+import { ThemeProvider } from "@/components/extern/theme-provider"
+
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -31,10 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("antialiased", fontHeading.variable, fontBody.variable)}>
+        <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
           <Providers>
             <Header />
             {children}
+            <FooterComp />
           </Providers>
+          </ThemeProvider>
         </body>
     </html>
   );

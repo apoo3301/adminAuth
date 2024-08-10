@@ -11,9 +11,14 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
+import { findUserByAuth } from '../../../../../resources/user-queries';
+import { UpdateUserInfoForm } from '@/components/extern/UpdateUserInfoForm';
   
 export default async function ProfilePage() {
     const session = await auth();
+    const databaseUser = await findUserByAuth();
+    
+
     return (
         <div className='mt-4'>
             <div className='container'>
@@ -25,7 +30,10 @@ export default async function ProfilePage() {
     )
 }
 
-const SignedIn = ({ user }: { user: User }) => {
+const SignedIn = async ({ user }: { user: User }) => {
+    // const sessionsUserId = user.id;
+    // // console.log(sessionsUserId);
+    // const databaseUser = await findUserById(sessionsUserId)
     return (
             <div className="flex flex-col min-h-screen bg-muted/40">
                 <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
@@ -120,33 +128,7 @@ const SignedIn = ({ user }: { user: User }) => {
                 <CardHeader>
                     <CardTitle>Profile</CardTitle>
                 </CardHeader>
-                <CardContent>
-                    <div className="flex items-center gap-4">
-                    <Avatar className="h-20 w-20">
-                        <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
-                        <AvatarFallback>JD</AvatarFallback>
-                    </Avatar>
-                    <div className="grid gap-2">
-                        <Button variant="outline">Change Photo</Button>
-                        <Button variant="secondary">Remove Photo</Button>
-                    </div>
-                    </div>
-                    <div className="grid gap-4">
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-1">
-                        <Label htmlFor="name">Name</Label>
-                        <Input id="name" defaultValue="John Doe" />
-                        </div>
-                        <div className="space-y-1">
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" defaultValue="john@example.com" />
-                        </div>
-                    </div>
-                    <div className='space-y-1'>
-                    <Button>Update Profile</Button>
-                    </div>
-                    </div>
-                </CardContent>
+                <UpdateUserInfoForm user={user} />
                 <CardFooter>
                     <SignoutButton />
                 </CardFooter>
