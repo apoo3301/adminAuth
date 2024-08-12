@@ -9,6 +9,7 @@ import * as schema from "@/drizzle/schema";
 import * as v from "valibot";
 import argon2 from "argon2";
 import { oauthVerifyEmailAction } from "@/actions/oauth-verify-email-action";
+import { OAuthAccountAlreadyLinkedError } from "@/lib/customErrors";
 
 const nextAuth = NextAuth({
     adapter: DrizzleAdapter(db,{
@@ -22,7 +23,27 @@ const nextAuth = NextAuth({
     secret: process.env.NEXTAUTH_SECRET,
     pages: { signIn: "/agency/auth/sign-in" },
     callbacks: {
-        jwt({ token, user}) {
+        authorized({ auth, request }) {
+            const { nextUrl } = request;
+            const isLoggedIn = !!auth?.user;
+            const isOnProfile = nextUrl.pathname.startsWith("/agency/profile");
+            const isOnAuth = nextUrl.pathname.startsWith("/agency/auth");
+
+            if (isOnProfile) {
+                if (isLoggedIn) return true;
+                return Response.redirect(new URL("/agency/auth/sign-in", nextUrl));
+            }
+            if (isOnAuth) {
+                if (!isLoggedIn) return true;
+                return Response.redirect(new URL("/agency/profile", nextUrl));
+            }
+
+            return true;
+        },
+        jwt({ token, user, trigger, session}) {
+            if (trigger == "update") {
+                return { ...token, ...session.user };
+            }
             if (user?.id) token.id = user.id;
             if (user?.role) token.role = user.role;
             return token;
@@ -31,6 +52,18 @@ const nextAuth = NextAuth({
             session.user.id = token.id;
             session.user.role = token.role;
             return session;
+        },
+        signIn({user, account, profile}) {
+            if (account?.provider == "google") {
+                return !!profile?.email_verified
+            }
+            if (account?.provider == "credentials") {
+                if (user.emailVerified) {
+
+                }
+                return true;
+            }
+            return false;
         },
     },
     events: {
@@ -48,7 +81,7 @@ const nextAuth = NextAuth({
                     const { email, password } = parsedCredentials.output;
                     const user = await findUserByEmail(email);
                     if (!user) return null;
-                    if (!user.password) return null;
+                    if (!user.password) throw new OAuthAccountAlreadyLinkedError();
 
                     const passwordMatch = await argon2.verify(user.password, password);
                     if (passwordMatch) {
@@ -63,6 +96,7 @@ const nextAuth = NextAuth({
         Google({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            allowDangerousEmailAccountLinking: true,
         }),
     ]
 });

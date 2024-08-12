@@ -1,6 +1,7 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 import { Button } from "../ui/button"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
+import Image from "next/image"
 
 export default function CarouselDemo() {
   return (
@@ -17,7 +18,7 @@ export default function CarouselDemo() {
         <Carousel className="rounded-lg overflow-hidden">
         <CarouselContent>
           <CarouselItem>
-            <img
+            <Image
               src="/bahia.jpg"
               alt="Nature Image 1"
               width="800"
@@ -26,7 +27,7 @@ export default function CarouselDemo() {
             />
           </CarouselItem>
           <CarouselItem>
-            <img
+            <Image
               src="/besson.jpg"
               alt="Nature Image 2"
               width="800"
@@ -35,7 +36,7 @@ export default function CarouselDemo() {
             />
           </CarouselItem>
           <CarouselItem>
-            <img
+            <Image
               src="/grimaud.jpg"
               alt="Nature Image 3"
               width="800"
@@ -44,7 +45,7 @@ export default function CarouselDemo() {
             />
           </CarouselItem>
           <CarouselItem>
-            <img
+            <Image
               src="/jsp.jpg"
               alt="Nature Image 4"
               width="800"
@@ -53,7 +54,7 @@ export default function CarouselDemo() {
             />
           </CarouselItem>
           <CarouselItem>
-            <img
+            <Image
               src="/jsp2.jpg"
               alt="Nature Image 5"
               width="800"
@@ -62,7 +63,7 @@ export default function CarouselDemo() {
             />
           </CarouselItem>
           <CarouselItem>
-            <img
+            <Image
               src="/lallemand.jpg"
               alt="Nature Image 5"
               width="800"
@@ -71,7 +72,7 @@ export default function CarouselDemo() {
             />
           </CarouselItem>
           <CarouselItem>
-            <img
+            <Image
               src="/nanzer.jpg"
               alt="Nature Image 5"
               width="800"

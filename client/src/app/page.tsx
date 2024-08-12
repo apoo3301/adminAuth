@@ -44,7 +44,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <img
+            <Image
               src="/bg.svg"
               width="550"
               height="550"
@@ -63,7 +63,7 @@ export default function Home() {
               Our exclusive accommodations
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Thanks to years of experience, we've built a strong trust with our property owners. This allows us to offer exclusive accommodations on <strong>WelkomHOME</strong> that you won't find anywhere else.
+                Thanks to years of experience, we&apos;ve built a strong trust with our property owners. This allows us to offer exclusive accommodations on <strong>WelkomHOME</strong> that you won&apos;t find anywhere else.
               </p>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <img
+            <Image
               src="/balcon.jpg"
               width="550"
               height="310"
@@ -116,14 +116,14 @@ export default function Home() {
             <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">They trusted us...</div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">What Our Clients Say</h2>
             <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Hear from our satisfied clients about the exceptional service and attention to detail they've
+              Hear from our satisfied clients about the exceptional service and attention to detail they&apos;ve
               experienced.
             </p>
           </div>
           <div className="divide-y rounded-lg border">
             <div className="grid w-full grid-cols-1 items-stretch justify-center divide-x md:grid-cols-2 lg:grid-cols-3">
               <div className="mx-auto flex w-full flex-col items-center justify-center p-4 sm:p-8 space-y-4">
-                <img
+                <Image
                   src="/icon.png"
                   width="64"
                   height="64"
@@ -136,11 +136,11 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground">Villa Naiades</p>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                "Logement conforme à l'annonce beaucoup d'équipements pour la cuisine, il suffit de poser vos valises et de vous régaler avec la vue magnifique, merci à l'hôte pour sa gentillesse, nous recommandons ce logement au top 👍"
+                &quot;Logement conforme à l&apos;annonce beaucoup d&apos;équipements pour la cuisine, il suffit de poser vos valises et de vous régaler avec la vue magnifique, merci à l&apos;hôte pour sa gentillesse, nous recommandons ce logement au top 👍&quot;
                 </p>
               </div>
               <div className="mx-auto flex w-full flex-col items-center justify-center p-4 sm:p-8 space-y-4">
-                <img
+                <Image
                   src="/icon.png"
                   width="64"
                   height="64"
@@ -153,11 +153,11 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground">Villa Tumulus</p>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                "Spacious villa with exceptionell view in a calm neighborhood. Great amenties!"
+                &quot;Spacious villa with exceptionell view in a calm neighborhood. Great amenties!&quot;
                 </p>
               </div>
               <div className="mx-auto flex w-full flex-col items-center justify-center p-4 sm:p-8 space-y-4">
-                <img
+                <Image
                   src="/icon.png"
                   width="64"
                   height="64"
@@ -170,7 +170,7 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground">Villa Les Tourterelles</p>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                "Shirley et Yoan ont été disponibles et très réactifs à chaques demandes. Ils sont de plus très sympathique et accueillants. Les prestations sont à la hauteur et la propreté était irréprochable dans le logement. Nous vous les conseillons les yeux fermés. Nous referons appel à eux pour nos prochaines vacances dans le sud!"
+                &quot;Shirley et Yoan ont été disponibles et très réactifs à chaques demandes. Ils sont de plus très sympathique et accueillants. Les prestations sont à la hauteur et la propreté était irréprochable dans le logement. Nous vous les conseillons les yeux fermés. Nous referons appel à eux pour nos prochaines vacances dans le sud!&quot;
                 </p>
               </div>
             </div>
@@ -185,19 +185,19 @@ export default function Home() {
 
 function ClockIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 return (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-clock-9"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 7.5 12"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-clock-9"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 7.5 12"/></svg>
 )
 }
 
 
 function ConfIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-scan-face"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-scan-face"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
   )
 }
 
 function WalletIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
   )
 }

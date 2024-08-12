@@ -21,6 +21,12 @@ export async function signinUserAction(values: unknown): Promise<Res> {
                 case "CredentialsSignin":
                 case "CallbackRouteError":
                     return { success: false, error: "invalid credentials", statusCode: 401 };
+                    case "OAuthAccountAlreadyLinked" as AuthError["type"]:
+                        return {
+                            success: false,
+                            error: "oauth account already linked",
+                            statusCode: 401,
+                        }
                 default:
                     return { success: false, error: "internal server error", statusCode: 500 };
             }

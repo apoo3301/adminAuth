@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 import { Label } from "../ui/label";
@@ -14,7 +14,7 @@ import { SigninSchema, type SigninInput } from "@/validators/signin-validator";
 import { signinUserAction } from "@/actions/signin-user-action";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
-import { OauthSigninButton } from "./OauthSigninButton";
+import { OauthSigninButton, OauthSigninButtosSkeleton } from "./OauthSigninButton";
 
 export const ButtonDialog = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +92,9 @@ export const ButtonDialog = () => {
                                         </FormItem>
                                     )}
                                 />
+                                <Suspense fallback={<OauthSigninButtosSkeleton />}>
                                 <OauthSigninButton />
+                                </Suspense>
                                 <Button
                                     type="submit"
                                     disabled={formState.isSubmitting}

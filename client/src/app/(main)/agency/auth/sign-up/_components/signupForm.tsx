@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { SignupInput, SignupSchema } from "@/validators/signup-validator";
@@ -12,7 +12,7 @@ import { IconBrandGithub, IconBrandGoogle, IconBrandOnlyfans } from "@tabler/ico
 import signupUserAction from "@/actions/signup-user-action";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { OauthSigninButton } from "@/components/extern/OauthSigninButton";
+import { OauthSigninButton, OauthSigninButtosSkeleton } from "@/components/extern/OauthSigninButton";
 
 export function SignupFormDemo() {
   const [success, setSuccess] = useState(false);
@@ -126,7 +126,9 @@ export function SignupFormDemo() {
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
         <div className="flex flex-col space-y-4">
+          <Suspense fallback={<OauthSigninButtosSkeleton signup />}>
           <OauthSigninButton signup />
+          </Suspense>
         </div>
       </form>
     </div>

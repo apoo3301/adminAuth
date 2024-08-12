@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { auth } from "../../../../../auth";
-import SignoutButton from "@/components/extern/SignoutButton";
+import SignoutButton from "@/app/(main)/agency/profile/_component/SignoutButton";
 import { Button } from "@/components/ui/button";
 import { type User } from "next-auth";
-import { UpdateUserInfoForm } from "@/components/extern/UpdateUserInfoForm";
+import { UpdateUserInfoForm } from "./_component/UpdateUserInfoForm";
 import { LockIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {
   const session = await auth();
+    if (!session) redirect("/agency/auth/sign-in");
 
   return (
     <main className="mt-4">
@@ -70,7 +72,7 @@ const SignedOut = () => {
       <div className="my-2 h-1 bg-muted" />
 
       <Button asChild>
-        <Link href="/auth/signin">Sign In</Link>
+        <Link href="/agency/auth/signin">Sign In</Link>
       </Button>
     </>
   );
