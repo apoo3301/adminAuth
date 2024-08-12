@@ -12,7 +12,7 @@ export default function SigninPage() {
                     {/* oauth */}
                     <p>Don&apos;t have an account? Click{" "}
                         <Button variant="link" size="sm" className="px-0" asChild>
-                            <Link href="/agency/auth/sign-un">here</Link>
+                            <Link href="/agency/auth/sign-up">here</Link>
                         </Button>{" "}
                         to sign up.
                     </p>
