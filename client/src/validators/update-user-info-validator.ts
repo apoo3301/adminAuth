@@ -8,7 +8,7 @@ export const UpdateUserInfoSchema = v.object({
     name: v.pipe(
         v.string("your name must be a string"),
         v.nonEmpty("your name must not be empty"),
-        v.maxLength(4, "your name must be less than 4 characters or more.")
+        v.minLength(4, "your name must be less than 4 characters or more.")
     )
 })
 
