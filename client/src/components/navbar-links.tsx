@@ -37,7 +37,7 @@ const SignedIn = () => {
         <>
             {/* <ModeToggle /> */}
             <Button size="sm" asChild variant="outline">
-                <Link href="/agency/profile">profile</Link>
+                <Link href="/agency/profile">Profile</Link>
             </Button>
         </>
     )
