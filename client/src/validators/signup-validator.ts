@@ -11,7 +11,7 @@ export const SignupSchema = v.pipe(
         v.pipe(
           v.string("Your name must be a string."),
           v.nonEmpty("Please enter your name."),
-          v.minLength(4, "Your name must have 4 characters or more.")
+          v.minLength(6, "Your name must have 6 characters or more.")
         ),
       ])
     ),

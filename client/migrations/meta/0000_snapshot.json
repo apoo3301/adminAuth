@@ -1,5 +1,5 @@
 {
-  "id": "58359892-25e3-42ab-85f4-9da1ae1c221d",
+  "id": "9f782d31-52fd-4586-a80e-1b7da32bb65c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -100,44 +100,6 @@
           ]
         }
       },
-      "uniqueConstraints": {}
-    },
-    "public.adminUserEmailAddresses": {
-      "name": "adminUserEmailAddresses",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "email": {
-          "name": "email",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "adminEmailUniqueIndex": {
-          "name": "adminEmailUniqueIndex",
-          "columns": [
-            {
-              "expression": "lower(\"email\")",
-              "asc": true,
-              "isExpression": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "public.authenticator": {
