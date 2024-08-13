@@ -89,10 +89,10 @@ export const UpdateUserInfoForm = ({ user }: UpdateUserInfoFormProps) => {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          size="icon"
-          className="bg-yellow-600 transition-colors hover:bg-yellow-600/80"
+          size="sm"
+          variant="outline"
         >
-          <PencilIcon />
+         Edit Profile
         </Button>
       </DialogTrigger>
 
