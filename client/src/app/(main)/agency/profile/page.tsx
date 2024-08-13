@@ -76,7 +76,7 @@ const SignedOut = () => {
       <div className="my-2 h-1 bg-muted" />
 
       <Button asChild>
-        <Link href="/auth/signin">Sign In</Link>
+        <Link href="/agency/auth/signin">Sign In</Link>
       </Button>
     </>
   );
@@ -85,7 +85,7 @@ const SignedOut = () => {
 const AdminPanelButton = () => {
   return (
     <Button size="lg" asChild>
-      <Link href="/profile/admin-panel">
+      <Link href="/agency/profile/admin-panel">
         <LockIcon className="mr-2" />
         Admin Panel
       </Link>

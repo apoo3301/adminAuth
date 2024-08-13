@@ -28,7 +28,7 @@ export default function SignupPage() {
         <p>
           Already have an account? Click{" "}
           <Button variant="link" size="sm" className="px-0" asChild>
-            <Link href="/auth/signin">here</Link>
+            <Link href="/agency/auth/signin">here</Link>
           </Button>{" "}
           to sign in.
         </p>

@@ -34,7 +34,7 @@ export const SignupForm = () => {
     const res = await signupUserAction(values);
 
     if (res.success) {
-      router.push("/auth/signup/success");
+      router.push("/agency/auth/signup/success");
     } else {
       switch (res.statusCode) {
         case 400:
@@ -62,7 +62,7 @@ export const SignupForm = () => {
         <span>
           Click{" "}
           <Button variant="link" size="sm" className="px-0" asChild>
-            <Link href="/auth/signin">here</Link>
+            <Link href="/agency/auth/signin">here</Link>
           </Button>{" "}
           to sign in.
         </span>

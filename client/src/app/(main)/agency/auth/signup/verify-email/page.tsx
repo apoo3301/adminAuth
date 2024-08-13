@@ -1,7 +1,7 @@
+import { verifyCredentialsEmailAction } from "@/actions/verify-credentials-email-action";
 import { Button } from "@/components/ui/button";
 import { findVerificationTokenByToken } from "@/resources/verification-token-queries";
 import Link from "next/link";
-import { ResetPasswordForm } from "./_components/reset-password-form";
 
 type PageProps = { searchParams: { token: string } };
 
@@ -16,34 +16,27 @@ export default async function Page({ searchParams }: PageProps) {
 
   if (isExpired) return <TokenIsInvalidState />;
 
+  const res = await verifyCredentialsEmailAction(searchParams.token);
+
+  if (!res.success) return <TokenIsInvalidState />;
+
   return (
     <main className="mt-4">
       <div className="container">
-        <div className="text-3xl font-bold tracking-tight">
-          Forgot Password?
-        </div>
+        <div className="text-3xl font-bold tracking-tight">Verify Email</div>
 
         <div className="my-2 h-1 bg-muted" />
         <div className="rounded bg-green-100 p-4">
-          <h2 className="text-2xl font-bold tracking-tight">
-            Enter your new password below
-          </h2>
+          <p>Email verified.</p>
 
-          <div className="mt-4">
-            <ResetPasswordForm
-              email={verificationToken.identifier}
-              token={searchParams.token}
-            />
-          </div>
+          <span>
+            Click{" "}
+            <Button variant="link" size="sm" className="px-0" asChild>
+              <Link href="/agency/auth/signin">here</Link>
+            </Button>{" "}
+            to sign in.
+          </span>
         </div>
-
-        <span>
-          No longer need to reset your password? Click{" "}
-          <Button variant="link" size="sm" className="px-0" asChild>
-            <Link href="/auth/signin">here</Link>
-          </Button>{" "}
-          to sign in.
-        </span>
       </div>
     </main>
   );
@@ -53,9 +46,7 @@ const TokenIsInvalidState = () => {
   return (
     <main className="mt-4">
       <div className="container">
-        <div className="text-3xl font-bold tracking-tight">
-          Forgot Password?
-        </div>
+        <div className="text-3xl font-bold tracking-tight">Verify Email</div>
 
         <div className="my-2 h-1 bg-muted" />
         <div className="rounded bg-red-100 p-4">
@@ -64,9 +55,9 @@ const TokenIsInvalidState = () => {
           <span>
             Click{" "}
             <Button variant="link" size="sm" className="px-0" asChild>
-              <Link href="/auth/signin">here</Link>
+              <Link href="/agency/auth/signup">here</Link>
             </Button>{" "}
-            to sign in page so you can request a new forgot password email.
+            to sign up again.
           </span>
         </div>
       </div>

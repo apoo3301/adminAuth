@@ -27,7 +27,7 @@ export const SigninForm = () => {
     const res = await signinUserAction(values);
 
     if (res.success) {
-      window.location.href = "/profile";
+      window.location.href = "/agency/profile";
     } else {
       switch (res.statusCode) {
         case 401:

@@ -12,7 +12,7 @@ import { ChangeUserRoleInput } from "./_components/change-user-role-input";
 export default async function Page() {
   const session = await auth();
 
-  if (session?.user?.role !== USER_ROLES.ADMIN) redirect("/profile");
+  if (session?.user?.role !== USER_ROLES.ADMIN) redirect("/agency/profile");
 
   const users = await findAllUsers();
 
@@ -90,7 +90,7 @@ export default async function Page() {
 const ProfileButton = () => {
   return (
     <Button size="lg" asChild>
-      <Link href="/profile">
+      <Link href="/agency/profile">
         <ArrowLeftSquareIcon className="mr-2" />
         Profile
       </Link>

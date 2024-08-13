@@ -31,5 +31,5 @@ export async function toggleEmailVerifiedAction(
     .set({ emailVerified })
     .where(eq(users.id, existingUser.id));
 
-  revalidatePath("/profile.admin-panel");
+  revalidatePath("/agency/profile/admin-panel");
 }

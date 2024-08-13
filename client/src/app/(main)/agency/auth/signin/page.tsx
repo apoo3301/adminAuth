@@ -29,7 +29,7 @@ export default function SigninPage() {
         <p>
           Don&apos;t have an account? Click{" "}
           <Button variant="link" size="sm" className="px-0" asChild>
-            <Link href="/auth/signup">here</Link>
+            <Link href="/agency/auth/signup">here</Link>
           </Button>{" "}
           to sign up.
         </p>

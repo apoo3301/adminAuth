@@ -38,7 +38,7 @@ export const ResetPasswordForm = ({ email, token }: ResetPasswordFormProps) => {
     const res = await resetPasswordAction(email, token, values);
 
     if (res.success) {
-      router.push("/auth/signin/reset-password/success");
+      router.push("/agency/auth/signin/reset-password/success");
     } else {
       switch (res.statusCode) {
         case 400:
