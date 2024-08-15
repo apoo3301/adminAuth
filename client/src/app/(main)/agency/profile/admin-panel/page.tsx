@@ -12,7 +12,7 @@ import { ChangeUserRoleInput } from "./_components/change-user-role-input";
 export default async function Page() {
   const session = await auth();
 
-  if (session?.user?.role !== USER_ROLES.ADMIN) redirect("/agency/profile");
+  if (session?.user?.role !== USER_ROLES.ADMIN) redirect("/profile");
 
   const users = await findAllUsers();
 

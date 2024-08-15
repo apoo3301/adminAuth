@@ -104,7 +104,7 @@ const SignedIn = async ({ user }: { user: User }) => {
                 </div>
               </div>
               <div className="grid gap-1">
-              <SignoutButton />
+                <SignoutButton />
               </div>
             </CardContent>
           </Card>
