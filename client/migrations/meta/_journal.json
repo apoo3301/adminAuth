@@ -15,6 +15,13 @@
       "when": 1721493512768,
       "tag": "0001_greedy_red_shift",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1723741990023,
+      "tag": "0002_clumsy_jazinda",
+      "breakpoints": true
     }
   ]
 }

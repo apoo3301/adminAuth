@@ -1,3 +1,4 @@
+import { create } from "domain";
 import { sql, SQL } from "drizzle-orm";
 import {
   boolean,
@@ -9,6 +10,7 @@ import {
   pgEnum,
   type AnyPgColumn,
   uniqueIndex,
+  json,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 
@@ -31,6 +33,7 @@ export const users = pgTable(
     image: text("image"),
     password: text("password"),
     role: roleEnum("role").notNull().default("user"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
   },
   (table) => ({
     emailUniqueIndex: uniqueIndex("emailUniqueIndex").on(lower(table.email)),
@@ -117,4 +120,16 @@ export const authenticators = pgTable(
       columns: [authenticator.userId, authenticator.credentialID],
     }),
   }),
+);
+
+export const listing = pgTable(
+  "listing",
+  {
+    id: text("id"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    address: text("address").unique(),
+    coordinates: json("coordinates"),
+    createdBy: text("createdBy").references(() => users.id),
+    active: boolean("active").notNull().default(false),
+  } 
 );

@@ -218,24 +218,29 @@ export default function HomePage() {
             </div>
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
             <div className="grid gap-1">
-              <div className="flex items-center space-x-2">
-                <Clock className="h-6 w-6 text-muted-foreground" />
-                <h3 className="text-lg font-bold">24/7 Availability</h3>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Our local teams are available at any time during your stay in all our destinations.
-              </p>
-            </div>
-              <div className="grid gap-1">
+              <div className="grid gap-1 p-4 rounded-lg hover:bg-gray-100 hover:shadow-md transition duration-200 ease-in-out">
                 <div className="flex items-center space-x-2">
-                  <ScanEye className="h-6 w-6 text-muted-foreground" />
-                  <h3 className="text-lg font-bold">Confidentiality</h3>
+                  <Clock className="h-6 w-6 text-muted-foreground" />
+                  <h3 className="text-lg font-bold">24/7 Availability</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Respect for your privacy is the foundation of our relationship with you.
-                  </p>
+                  Our local teams are available at any time during your stay in all our destinations.
+                </p>
+              </div>
+            </div>
+              <div className="grid gap-1">
+                <div className="grid gap-1 p-4 rounded-lg hover:bg-gray-100 hover:shadow-md transition duration-200 ease-in-out">
+                  <div className="flex items-center space-x-2">
+                    <ScanEye className="h-6 w-6 text-muted-foreground" />
+                    <h3 className="text-lg font-bold">Confidentiality</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Respect for your privacy is the foundation of our relationship with you.
+                    </p>
+                  </div>
               </div>
               <div className="grid gap-1">
+              <div className="grid gap-1 p-4 rounded-lg hover:bg-gray-100 hover:shadow-md transition duration-200 ease-in-out">
                 <div className="flex items-center space-x-2">
                   <Wallet className="h-6 w-6 text-muted-foreground" />
                 <h3 className="text-lg font-bold">The best offer</h3>
@@ -243,6 +248,7 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground">
                 We work directly with our owners to ensure you get the fairest prices.
                 </p>
+                </div>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -428,7 +434,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section>
+        {/* <section>
       <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
           <div className="relative z-10 lg:py-16">
@@ -464,7 +470,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </section>
+    </section> */}
       </main>
     </div>
   );
